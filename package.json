@@ -1,12 +1,16 @@
 {
   "name": "fruits",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Fruit basket price Kata",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "keywords": [],
-  "author": "David LACOURT <david.lacourt@generali.com>",
-  "license": "UNLICENSED"
+  "author": "David LACOURT <david.lacourt@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "23.6.0"
+  }
 }
