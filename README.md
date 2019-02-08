@@ -50,3 +50,5 @@ We would like to see the output for an example basket containing the following i
 ## Next Steps
 
 This is a finished project, but I will continue to play around to test Github Actions to setup a CI/CD to build, test, and report code coverage. Adding a few README badges along the way.
+
+Added a CI Github Actions.
