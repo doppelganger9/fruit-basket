@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "start": "node main.js"
   },
   "keywords": [],
   "author": "David LACOURT <david.lacourt@gmail.com>",
