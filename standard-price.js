@@ -1,11 +1,14 @@
 const itemPriceTable = require('./item-price-table');
 
-let standardPrice = function (line) {
-  if (!line.item) return 0;
-  if (!itemPriceTable[line.item]) return 0;
-  const amount = itemPriceTable[line.item].amount;
-  const nb = +(line.number ? line.number : 0);
-  return +(amount * nb).toFixed(2);
+let standardPrice = function (itemType, numberOfItems) {
+  if (!itemType) return { orderTotal: 0 };
+  if (!numberOfItems) return { orderTotal: 0 };
+  if (!itemPriceTable[itemType]) return { orderTotal: 0 };
+  const amount = itemPriceTable[itemType].amount;
+  const nb = +numberOfItems;
+  return {
+    orderTotal: + (amount * nb).toFixed(2)
+  };
 };
 
 module.exports = standardPrice;

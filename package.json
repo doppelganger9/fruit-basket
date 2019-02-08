@@ -12,5 +12,16 @@
   "license": "MIT",
   "devDependencies": {
     "jest": "23.6.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
   }
 }

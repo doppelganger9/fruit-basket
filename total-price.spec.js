@@ -2,82 +2,98 @@ const totalPrice = require('./total-price');
 
 describe('total-price', () => {
 
-  it('given empty basket, when called, then return 0', () => {
-    let basket = [];
-    const res = totalPrice(basket);
-    expect(res).toEqual(0);
+  it('given no basket, when called, then return 0', () => {
+    const res = totalPrice();
+    expect(res.orderTotal).toEqual(0);
+    expect(res.freeItems).toBeUndefined();
   });
 
-  it('given a basket containing 1 Apple + 1 Orange + 1 Watermelon, when called, then return 1.5', () => {
-    let basket = [{ item: 'Apple', number: 1 }, { item: 'Orange', number: 1 }, { item: 'Watermelon', number: 1 }];
+  it('given empty basket, when called, then return 0', () => {
+    let basket = {};
     const res = totalPrice(basket);
-    expect(res).toEqual(0.2+.8+.5);
+    expect(res.orderTotal).toEqual(0);
+    expect(res.freeItems).toBeUndefined();
+  });
+
+  it('given a basket containing 1 Apple + 1 Orange + 1 Watermelon, when called, then return 1.5 and 1 free Apple', () => {
+    let basket = {
+      orderedItemsByType: { 'Apple': 1, 'Orange': 1, 'Watermelon': 1 }
+    };
+    const res = totalPrice(basket);
+    expect(res.orderTotal).toEqual(+(0.2 + 0.8 + 0.5).toFixed(2));
+    expect(res.freeItems['Apple']).toEqual(1);
   });
 
   it('given a basket containing 4 Apples + 3 Oranges + 5 Watermelons, when called, then return 5.1', () => {
-    let basket = [
-      { item: 'Apple', number: 4 },
-      { item: 'Orange', number: 3 },
-      { item: 'Watermelon', number: 5 },
-    ];
-    /*
-      pay 2 Apples = 2*.20, 2 free = 4 Apples
-      pay Orange : 3 * .50
-      pay 3 watermelons for price of 2 + 2 = 4*.8
-      = 2*.2+ 3*.5 + 4*.8 = 5.1
-      */
+    let basket = {
+      orderedItemsByType: {
+        'Apple': 4,
+        'Orange': 3,
+        'Watermelon': 5,
+      }
+    };
     const res = totalPrice(basket);
-    expect(res).toEqual(5.1);
+    expect(res.orderTotal).toEqual(+((4 * .2) + (3 * .5) + (4 * .8)).toFixed(2));
+    expect(res.freeItems['Apple']).toEqual(4);
   });
 
   describe('buy one get one free on Apples', () => {
-    it('given a basket containing 1 Apple, when called, then return the price of 1 Apple .20', () => {
-      let basket = [{ item: 'Apple', number: 1 }];
+    it('given a basket containing 1 Apple, when called, then return the price of 1 Apple .20 and 1 free Apple ', () => {
+      let basket = { orderedItemsByType: { 'Apple': 1 } };
       const res = totalPrice(basket);
-      expect(res).toEqual(.2);
+      expect(res.orderTotal).toEqual(+(1 * 0.2).toFixed(2));
+      expect(res.freeItems['Apple']).toEqual(1);
     });
-    it('given a basket containing 2 Apples, when called, then return the price of 1 Apple .20', () => {
-      let basket = [{ item: 'Apple', number: 2 }];
+    it('given a basket containing 2 Apples, when called, then return the price of 2 Apple .40 and 2 free Apples', () => {
+      let basket = { orderedItemsByType: { 'Apple': 2 } };
       const res = totalPrice(basket);
-      expect(res).toEqual(0.2);
+      expect(res.orderTotal).toEqual(+(2 * 0.2).toFixed(2));
+      expect(res.freeItems['Apple']).toEqual(2);
     });
-    it('given a basket containing 3 Apples, when called, then return the price of 2 Apples .40', () => {
-      let basket = [{ item: 'Apple', number: 3 }];
+    it('given a basket containing 3 Apples, when called, then return the price of 3 Apples .60 and 3 free Apples', () => {
+      let basket = { orderedItemsByType: { 'Apple': 3 } };
       const res = totalPrice(basket);
-      expect(res).toEqual(0.4);
+      expect(res.orderTotal).toEqual(+(3 * .2).toFixed(2));
+      expect(res.freeItems['Apple']).toEqual(3);
     });
   });
 
   describe('3 for the price of 2 on Watermelons', () => {
     it('given a basket containing 1 Watermelon, when called, then return the price of 1 Apple .80', () => {
-      let basket = [{ item: 'Watermelon', number: 1 }];
+      let basket = { orderedItemsByType: { 'Watermelon': 1 } };
       const res = totalPrice(basket);
-      expect(res).toEqual(0.8);
+      expect(res.orderTotal).toEqual(+(1 * 0.8).toFixed(2));
+      expect(res.freeItems).toBeUndefined();
     });
     it('given a basket containing 2 Watermelons, when called, then return the price of 2 Watermelons 1.60', () => {
-      let basket = [{ item: 'Watermelon', number: 2 }];
+      let basket =  { orderedItemsByType: {'Watermelon': 2}};
       const res = totalPrice(basket);
-      expect(res).toEqual(1.6);
+      expect(res.orderTotal).toEqual(+(2 * 0.8).toFixed(2));
+      expect(res.freeItems).toBeUndefined();
     });
     it('given a basket containing 3 Watermelons, when called, then return the price of 2 Watermelons 1.60', () => {
-      let basket = [{ item: 'Watermelon', number: 3 }];
+      let basket =  { orderedItemsByType: {'Watermelon': 3}};
       const res = totalPrice(basket);
-      expect(res).toEqual(1.6);
+      expect(res.orderTotal).toEqual(+(2 * 0.8).toFixed(2));
+      expect(res.freeItems).toBeUndefined();
     });
     it('given a basket containing 4 Watermelons, when called, then return the price of 3 Watermelons 2.40', () => {
-      let basket = [{ item: 'Watermelon', number: 4 }];
+      let basket =  { orderedItemsByType: {'Watermelon': 4}};
       const res = totalPrice(basket);
-      expect(res).toEqual(2.4);
+      expect(res.orderTotal).toEqual(+(3 * 0.8).toFixed(2));
+      expect(res.freeItems).toBeUndefined();
     });
     it('given a basket containing 5 Watermelons, when called, then return the price of 4 Watermelons 3.20', () => {
-      let basket = [{ item: 'Watermelon', number: 5 }];
+      let basket =  { orderedItemsByType: {'Watermelon': 5}};
       const res = totalPrice(basket);
-      expect(res).toEqual(3.2);
+      expect(res.orderTotal).toEqual(+(4 * 0.8).toFixed(2));
+      expect(res.freeItems).toBeUndefined();
     });
     it('given a basket containing 6 Watermelons, when called, then return the price of 4 Watermelons 3.20', () => {
-      let basket = [{ item: 'Watermelon', number: 6 }];
+      let basket =  { orderedItemsByType: {'Watermelon': 6}};
       const res = totalPrice(basket);
-      expect(res).toEqual(3.2);
+      expect(res.orderTotal).toEqual(+(4 * 0.8).toFixed(2));
+      expect(res.freeItems).toBeUndefined();
     });
   });
 });
