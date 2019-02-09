@@ -24,6 +24,10 @@ action "report code coverage to Coveralls" {
   needs = "run npm test"
   uses = "actions/npm@master"
   args = "run coveralls"
+  secrets = ["COVERALLS_REPO_TOKEN"]
+  env = {
+    COVERALLS_SERVICE_NAME = "Github Actions main.workflow"
+  }
 }
 
 action "run npm start" {
