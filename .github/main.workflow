@@ -5,17 +5,23 @@ workflow "CI" {
 
 action "install deps" {
   uses = "actions/npm@master"
-  runs = "ci"
+  args = "ci"
 }
 
 action "run npm test" {
   needs = "install deps"
   uses = "actions/npm@master"
-  runs = "test"
+  args = "test"
+}
+
+action "run prettier check" {
+  needs = "run npm test"
+  uses = "actions/npm@master"
+  args = "prettier:check"
 }
 
 action "run npm start" {
   uses = "actions/npm@master"
-  runs = "start"
+  args = "start"
   needs = ["run npm test"]
 }
