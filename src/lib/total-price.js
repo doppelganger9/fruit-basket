@@ -1,7 +1,7 @@
 const itemStrategy = {
-  Apple: require('./buy-1-get-1-free'),
-  Orange: require('./standard-price'),
-  Watermelon: require('./3-for-the-price-of-2'),
+  Apple: require("./buy-1-get-1-free"),
+  Orange: require("./standard-price"),
+  Watermelon: require("./3-for-the-price-of-2")
 };
 
 function computeTotalPrice(basket = {}) {
@@ -12,10 +12,12 @@ function computeTotalPrice(basket = {}) {
     const numberOfItems = truc[itemType];
     const strategyFn = itemStrategy[itemType];
     const { freeItems, orderTotal } = strategyFn(itemType, numberOfItems);
-    const finalBasketTotal = finalBasket.orderTotal ? +finalBasket.orderTotal : 0;
+    const finalBasketTotal = finalBasket.orderTotal
+      ? +finalBasket.orderTotal
+      : 0;
     let res = {
       ...finalBasket,
-      orderTotal: (+finalBasketTotal) + (+orderTotal),
+      orderTotal: +finalBasketTotal + +orderTotal
     };
     if (finalBasket.freeItems) {
       res.freeItems = finalBasket.freeItems;
@@ -27,11 +29,9 @@ function computeTotalPrice(basket = {}) {
     }
     return res;
   };
-  const reduceResult = itemTypes.reduce(reducer,
-    {
-      orderedItemsByType: basket.orderedItemsByType,
-    }
-  );
+  const reduceResult = itemTypes.reduce(reducer, {
+    orderedItemsByType: basket.orderedItemsByType
+  });
   return reduceResult;
 }
 
