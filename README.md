@@ -1,4 +1,6 @@
-# Fruit Basket Kata
+# Fruit Basket Kata - 🍎🍊🍉🛒💷🥋
+
+[![Build Status](https://travis-ci.org/doppelganger9/fruit-basket.svg?branch=master)](https://travis-ci.org/doppelganger9/fruit-basket) [![Maintainability](https://api.codeclimate.com/v1/badges/afb1121a42a57c4e172b/maintainability)](https://codeclimate.com/github/doppelganger9/fruit-basket/maintainability) [![Coverage Status](https://coveralls.io/repos/github/doppelganger9/fruit-basket/badge.svg?branch=master)](https://coveralls.io/github/doppelganger9/fruit-basket?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/doppelganger9/fruit-basket/badge.svg?targetFile=package.json)](https://snyk.io/test/github/doppelganger9/fruit-basket?targetFile=package.json)
 
 This is a NodeJS implementation of a fruit basket order Kata.
 
