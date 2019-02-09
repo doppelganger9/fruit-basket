@@ -1,6 +1,6 @@
 # Fruit Basket Kata - 🍎🍊🍉🛒💷🥋
 
-[![Build Status](https://travis-ci.org/doppelganger9/fruit-basket.svg?branch=master)](https://travis-ci.org/doppelganger9/fruit-basket) [![Maintainability](https://api.codeclimate.com/v1/badges/afb1121a42a57c4e172b/maintainability)](https://codeclimate.com/github/doppelganger9/fruit-basket/maintainability) [![Coverage Status](https://coveralls.io/repos/github/doppelganger9/fruit-basket/badge.svg?branch=master)](https://coveralls.io/github/doppelganger9/fruit-basket?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/doppelganger9/fruit-basket/badge.svg?targetFile=package.json)](https://snyk.io/test/github/doppelganger9/fruit-basket?targetFile=package.json)
+![Actions Status](https://wdp9fww0r9.execute-api.us-west-2.amazonaws.com/production/badge/doppelganger9/fruit-basket) [![Build Status](https://travis-ci.org/doppelganger9/fruit-basket.svg?branch=master)](https://travis-ci.org/doppelganger9/fruit-basket) [![Maintainability](https://api.codeclimate.com/v1/badges/afb1121a42a57c4e172b/maintainability)](https://codeclimate.com/github/doppelganger9/fruit-basket/maintainability) [![Coverage Status](https://coveralls.io/repos/github/doppelganger9/fruit-basket/badge.svg?branch=master)](https://coveralls.io/github/doppelganger9/fruit-basket?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/doppelganger9/fruit-basket/badge.svg?targetFile=package.json)](https://snyk.io/test/github/doppelganger9/fruit-basket?targetFile=package.json)
 
 This is a NodeJS implementation of a fruit basket order Kata.
 
@@ -55,14 +55,20 @@ This is a finished project, but I did continue to play around to test Github Act
 
 Also added a few README badges along the way.
 
-- Added a [Travis CI](https://travis-ci.org) build
+- Added a [Travis CI](https://travis-ci.org) build (install, test, etc.) see `.travis.yml` file
 - with code coverage reporting via [Coveralls](https://coveralls.io)
 - and dependency vulnerability analysis via [Snyk](https://snyk.io)
 - and code quality analysis via [Code Climate](https://codeclimate.com)
 
-Also, to compare with:
+Also, to compare with I added a Github Actions Workflow that almost does the same (see `.github/main.workflow` file):
 
-- Added a Github Actions Workflow that installs, test, start, run prettier:check
+- install
+- test
+- start
+- check prettier
+- report code coverage
+
+(Still missing the Code Climate integration)
 
 ## LICENSE
 
