@@ -51,13 +51,18 @@ We would like to see the output for an example basket 🛒 containing the follow
 
 ## Next Steps
 
-This is a finished project, but I will continue to play around to test Github Actions to setup a CI/CD to build, test, and report code coverage. Adding a few README badges along the way.
+This is a finished project, but I did continue to play around to test Github Actions to setup a CI/CD to build, test, and report code coverage.
 
-- Added a CI Github Actions: I did not achieve to do as well as a Travis CI build, so...
+Also added a few README badges along the way.
+
 - Added a [Travis CI](https://travis-ci.org) build
 - with code coverage reporting via [Coveralls](https://coveralls.io)
 - and dependency vulnerability analysis via [Snyk](https://snyk.io)
 - and code quality analysis via [Code Climate](https://codeclimate.com)
+
+Also, to compare with:
+
+- Added a Github Actions Workflow that installs, test, start, run prettier:check
 
 ## LICENSE
 
