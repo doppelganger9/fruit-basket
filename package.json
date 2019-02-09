@@ -9,7 +9,8 @@
     "test:watch": "jest --watch",
     "prettier:write": "prettier src/**/*.js --write",
     "prettier:check": "prettier src/**/*.js --check",
-    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "test:mutate": "stryker run"
   },
   "keywords": [],
   "author": "David LACOURT <david.lacourt@gmail.com>",
@@ -17,7 +18,12 @@
   "devDependencies": {
     "coveralls": "3.0.2",
     "jest": "23.6.0",
-    "prettier": "1.16.4"
+    "prettier": "1.16.4",
+    "stryker": "0.35.0",
+    "stryker-api": "0.24.0",
+    "stryker-html-reporter": "0.18.0",
+    "stryker-javascript-mutator": "0.14.0",
+    "stryker-jest-runner": "1.4.0"
   },
   "jest": {
     "collectCoverage": true,

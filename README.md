@@ -1,6 +1,6 @@
 # Fruit Basket Kata - 🍎🍊🍉🛒💷🥋
 
-![Actions Status](https://wdp9fww0r9.execute-api.us-west-2.amazonaws.com/production/badge/doppelganger9/fruit-basket) [![Build Status](https://travis-ci.org/doppelganger9/fruit-basket.svg?branch=master)](https://travis-ci.org/doppelganger9/fruit-basket) [![Maintainability](https://api.codeclimate.com/v1/badges/afb1121a42a57c4e172b/maintainability)](https://codeclimate.com/github/doppelganger9/fruit-basket/maintainability) [![Coverage Status](https://coveralls.io/repos/github/doppelganger9/fruit-basket/badge.svg?branch=master)](https://coveralls.io/github/doppelganger9/fruit-basket?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/doppelganger9/fruit-basket/badge.svg?targetFile=package.json)](https://snyk.io/test/github/doppelganger9/fruit-basket?targetFile=package.json)
+![Actions Status](https://wdp9fww0r9.execute-api.us-west-2.amazonaws.com/production/badge/doppelganger9/fruit-basket) [![Build Status](https://travis-ci.org/doppelganger9/fruit-basket.svg?branch=master)](https://travis-ci.org/doppelganger9/fruit-basket) [![Maintainability](https://api.codeclimate.com/v1/badges/afb1121a42a57c4e172b/maintainability)](https://codeclimate.com/github/doppelganger9/fruit-basket/maintainability) [![Coverage Status](https://coveralls.io/repos/github/doppelganger9/fruit-basket/badge.svg?branch=master)](https://coveralls.io/github/doppelganger9/fruit-basket?branch=master) [![Mutation testing badge](https://badge.stryker-mutator.io/github.com/doppelganger9/fruit-basket/master)](https://stryker-mutator.github.io) [![Known Vulnerabilities](https://snyk.io/test/github/doppelganger9/fruit-basket/badge.svg?targetFile=package.json)](https://snyk.io/test/github/doppelganger9/fruit-basket?targetFile=package.json)
 
 This is a NodeJS implementation of a fruit basket order Kata.
 
@@ -59,6 +59,7 @@ Also added a few README badges along the way.
 - with code coverage reporting via [Coveralls](https://coveralls.io)
 - and dependency vulnerability analysis via [Snyk](https://snyk.io)
 - and code quality analysis via [Code Climate](https://codeclimate.com)
+- mutation testing with [Stryker](https://stryker-mutator.io), which helped me refine tests and unused code.
 
 Also, to compare with I added a Github Actions Workflow that almost does the same (see `.github/main.workflow` file):
 

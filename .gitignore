@@ -3,3 +3,5 @@ node_modules/
 tmp/
 logs/
 coverage/
+reports/
+*.log
