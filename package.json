@@ -2,17 +2,20 @@
   "name": "fruits",
   "version": "1.0.0",
   "description": "Fruit basket price Kata",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
     "test": "jest",
+    "start": "node src/main.js",
     "test:watch": "jest --watch",
-    "start": "node main.js"
+    "prettier:write": "prettier src/**/*.js --write",
+    "prettier:check": "prettier src/**/*.js --check"
   },
   "keywords": [],
   "author": "David LACOURT <david.lacourt@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "jest": "23.6.0"
+    "jest": "23.6.0",
+    "prettier": "1.16.4"
   },
   "jest": {
     "collectCoverage": true,
