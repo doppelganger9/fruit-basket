@@ -17,7 +17,7 @@ action "run npm test" {
 action "run prettier check" {
   needs = "run npm test"
   uses = "actions/npm@master"
-  args = "prettier:check"
+  args = "run prettier:check"
 }
 
 action "run npm start" {
