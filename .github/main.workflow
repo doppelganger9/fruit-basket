@@ -43,7 +43,7 @@ action "run npm start" {
 }
 
 action "report mutation testing score" {
-  uses = "actions/npm@latest"
+  uses = "actions/npm@master"
   needs = ["run npm test"]
   args = "run test:mutate"
   secrets = ["STRYKER_DASHBOARD_API_KEY"]
@@ -56,7 +56,7 @@ action "report mutation testing score" {
 }
 
 action "vulnerabilities check" {
-  uses = "actions/npm@latest"
+  uses = "actions/npm@master"
   needs = ["install deps"]
   args = "run test:vulnerabilities"
   secrets = ["SNYK_TOKEN"]
