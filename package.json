@@ -7,8 +7,8 @@
     "test": "jest",
     "start": "node src/main.js",
     "test:watch": "jest --watch",
-    "prettier:write": "prettier src/**/*.js --write",
-    "prettier:check": "prettier src/**/*.js --check",
+    "prettier:write": "prettier *.js src/**/*.js --write",
+    "prettier:check": "prettier *.js src/**/*.js --check",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "test:mutate": "stryker run"
   },

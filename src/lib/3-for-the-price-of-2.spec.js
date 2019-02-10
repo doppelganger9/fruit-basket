@@ -14,10 +14,7 @@ describe("3 for the price of 2 on Watermelons", () => {
   });
 
   it("given wrong number of items type when called then return 0", () => {
-    const { freeItems, orderTotal } = threeForThePriceOfTwo(
-      "Watermelon",
-      "coco"
-    );
+    const { freeItems, orderTotal } = threeForThePriceOfTwo("Watermelon", "coco");
     expect(freeItems).toBeUndefined();
     expect(orderTotal).toEqual(0);
   });

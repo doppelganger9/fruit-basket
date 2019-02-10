@@ -12,9 +12,7 @@ function computeTotalPrice(basket = {}) {
     const numberOfItems = truc[itemType];
     const strategyFn = itemStrategy[itemType];
     const { freeItems, orderTotal } = strategyFn(itemType, numberOfItems);
-    const finalBasketTotal = finalBasket.orderTotal
-      ? +finalBasket.orderTotal
-      : 0;
+    const finalBasketTotal = finalBasket.orderTotal ? +finalBasket.orderTotal : 0;
     let res = {
       ...finalBasket,
       orderTotal: +finalBasketTotal + +orderTotal
