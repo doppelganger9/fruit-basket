@@ -36,10 +36,7 @@ describe("buy one get one free on Apples", () => {
     "given a line containing $apples Apples, when called",
     ({ apples: appleNumber, freeApples: expectedFreeItems, expectedPrice }) => {
       test(`, then return ${expectedFreeItems} free items and ${expectedPrice} total price`, () => {
-        const { freeItems, orderTotal } = buyOneGetOneFree(
-          "Apple",
-          +appleNumber
-        );
+        const { freeItems, orderTotal } = buyOneGetOneFree("Apple", +appleNumber);
         expect(freeItems).toEqual(+expectedFreeItems);
         expect(orderTotal).toEqual(+expectedPrice);
       });
