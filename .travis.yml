@@ -13,6 +13,7 @@ install:
 
 script:
  - npm run prettier:check
+ - npm run test:vulnerabilities
  - npm test
  - npm run coveralls
  - npm run test:mutate
