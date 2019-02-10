@@ -1,5 +1,9 @@
 language : node_js
 
+addons:
+  sonarcloud:
+    organization: "doppelganger9-github"
+
 node_js :
  - lts/*
 
@@ -17,6 +21,7 @@ script:
  - npm test
  - npm run coveralls
  - npm run test:mutate
+ - sonar-scanner
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
