@@ -5,6 +5,7 @@ workflow "CI" {
     "run prettier check",
     "report code coverage to Coveralls",
     "report mutation testing score",
+    "vulnerabilities check"
   ]
 }
 
@@ -42,7 +43,7 @@ action "run npm start" {
 }
 
 action "report mutation testing score" {
-  uses = "actions/npm@4633da3702a5366129dca9d8cc3191476fc3433c"
+  uses = "actions/npm@latest"
   needs = ["run npm test"]
   args = "run test:mutate"
   secrets = ["STRYKER_DASHBOARD_API_KEY"]
@@ -52,4 +53,11 @@ action "report mutation testing score" {
     TRAVIS_REPO_SLUG = "\"${GITHUB_REPOSITORY}\""
     HAS_JOSH_K_SEAL_OF_APPROVAL = "true"
   }
+}
+
+action "vulnerabilities check" {
+  uses = "actions/npm@latest"
+  needs = ["install deps"]
+  args = "run test:vulnerabilities"
+  secrets = ["SNYK_TOKEN"]
 }
