@@ -11,6 +11,11 @@ describe("standard-price", () => {
     expect(res.orderTotal).toEqual(0);
   });
 
+  it("when given an invalid number, then return 0", () => {
+    const res = standardPrice("Apple", "coco");
+    expect(res.orderTotal).toEqual(0);
+  });
+
   it("when given an unknown type of item, then return 0", () => {
     const res = standardPrice("Unknown", 2);
     expect(res.orderTotal).toEqual(0);

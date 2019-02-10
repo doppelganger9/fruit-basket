@@ -7,6 +7,12 @@ describe("3 for the price of 2 on Watermelons", () => {
     expect(orderTotal).toEqual(0);
   });
 
+  it("given null type when called then return 0", () => {
+    const { freeItems, orderTotal } = threeForThePriceOfTwo(null);
+    expect(freeItems).toBeUndefined();
+    expect(orderTotal).toEqual(0);
+  });
+
   it("given no number of items when called then return 0", () => {
     const { freeItems, orderTotal } = threeForThePriceOfTwo("Watermelon");
     expect(freeItems).toBeUndefined();

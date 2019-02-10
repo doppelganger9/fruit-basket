@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`main given nothing, when called, then show result in console.log 1`] = `
+Array [
+  Array [
+    "{
+  \\"orderedItemsByType\\": {
+    \\"Apple\\": 4,
+    \\"Orange\\": 3,
+    \\"Watermelon\\": 5
+  },
+  \\"freeItems\\": {
+    \\"Apple\\": 4
+  },
+  \\"orderTotal\\": 5.5
+}",
+  ],
+]
+`;
