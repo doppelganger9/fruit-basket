@@ -21,7 +21,7 @@ script:
  - npm test
  - npm run coveralls
  - npm run test:mutate
- - sonar-scanner -Dsonar.projectKey=doppelganger9_fruit-basket -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN -Dsonar.exclusions=node_modules/**/*,coverage/**/*,reports/**/*
+ - sonar-scanner -Dsonar.projectKey=doppelganger9_fruit-basket -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN -Dsonar.exclusions=node_modules/**/*,coverage/**/*,reports/**/* -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
