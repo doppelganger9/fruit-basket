@@ -49,7 +49,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm test && npm run prettier:check",
-      "pre-push": "npm test && npm run prettier:check && npm run test:mutate && npm run test:vulnerabilities"
+      "pre-push": "npm run test:mutate && npm run test:vulnerabilities"
     }
   }
 }
