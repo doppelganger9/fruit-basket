@@ -7,12 +7,12 @@
   "repository": "github:doppelganger9/fruit-basket",
   "main": "src/main.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --testPathIgnorePatterns=\".stryker-tmp\"",
     "start": "node src/main.js",
-    "test:watch": "jest --watch",
+    "test:watch": "jest --watch --testPathIgnorePatterns=\".stryker-tmp\"",
     "prettier:write": "prettier *.js src/**/*.js --write",
     "prettier:check": "prettier *.js src/**/*.js --check",
-    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "coveralls": "jest --testPathIgnorePatterns=\".stryker-tmp\" --coverage && cat ./coverage/lcov.info | coveralls",
     "test:mutate": "stryker run",
     "test:vulnerabilities": "npm audit && snyk test"
   },
