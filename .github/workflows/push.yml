@@ -1,0 +1,47 @@
+on: push
+name: CI
+jobs:
+  installDeps:
+    name: install deps
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: install deps
+      uses: actions/npm@master
+      with:
+        args: ci
+    - name: run npm test
+      uses: actions/npm@master
+      with:
+        args: test
+    - name: vulnerabilities check
+      uses: actions/npm@master
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        args: run test:vulnerabilities
+    - name: report mutation testing score
+      uses: actions/npm@master
+      env:
+        HAS_JOSH_K_SEAL_OF_APPROVAL: "true"
+        STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
+        TRAVIS_BRANCH: '"${GITHUB_REF}"'
+        TRAVIS_PULL_REQUEST: "false"
+        TRAVIS_REPO_SLUG: '"${GITHUB_REPOSITORY}"'
+      with:
+        args: run test:mutate
+    - name: report code coverage to Coveralls
+      uses: actions/npm@master
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+        COVERALLS_SERVICE_NAME: Github Actions main.workflow
+      with:
+        args: run coveralls
+    - name: run prettier check
+      uses: actions/npm@master
+      with:
+        args: run prettier:check
+    - name: run npm start
+      uses: actions/npm@master
+      with:
+        args: start
