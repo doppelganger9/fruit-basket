@@ -34,7 +34,7 @@
     "@stryker-mutator/jest-runner": "2.1.0",
     "coveralls": "3.0.6",
     "husky": "3.0.5",
-    "jest": "24.5.0",
+    "jest": "24.9.0",
     "prettier": "1.18.2",
     "snyk": "1.136.3"
   },
