@@ -1,47 +1,29 @@
 on: push
 name: CI
 jobs:
-  installDeps:
-    name: install deps
+  build:
+    name: npm build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: install deps
-      uses: actions/npm@master
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
       with:
-        args: ci
-    - name: run npm test
-      uses: actions/npm@master
-      with:
-        args: test
-    - name: vulnerabilities check
-      uses: actions/npm@master
+        node-version: '10.x'
+    - run: npm ci
+    - run: npm test
+    - run: npm run test:vulnerabilities
       env:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      with:
-        args: run test:vulnerabilities
-    - name: report mutation testing score
-      uses: actions/npm@master
+    - run: npm run test:mutate
       env:
         HAS_JOSH_K_SEAL_OF_APPROVAL: "true"
         STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
         TRAVIS_BRANCH: '"${GITHUB_REF}"'
         TRAVIS_PULL_REQUEST: "false"
         TRAVIS_REPO_SLUG: '"${GITHUB_REPOSITORY}"'
-      with:
-        args: run test:mutate
-    - name: report code coverage to Coveralls
-      uses: actions/npm@master
+    - run: npm run coveralls
       env:
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
         COVERALLS_SERVICE_NAME: Github Actions main.workflow
-      with:
-        args: run coveralls
-    - name: run prettier check
-      uses: actions/npm@master
-      with:
-        args: run prettier:check
-    - name: run npm start
-      uses: actions/npm@master
-      with:
-        args: start
+    - run: npm run prettier:check
+    - run: npm start
