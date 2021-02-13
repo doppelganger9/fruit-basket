@@ -6,3 +6,4 @@ coverage/
 reports/
 *.log
 .stryker-tmp/
+npm-cache/
