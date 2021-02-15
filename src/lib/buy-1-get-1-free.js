@@ -1,6 +1,6 @@
 const itemPriceTable = require("./item-price-table");
 
-let buyOneGetOneFree = function(itemType, numberOfItems) {
+let buyOneGetOneFree = function (itemType, numberOfItems) {
   if (!itemPriceTable[itemType]) return { orderTotal: 0 };
   const nb = +numberOfItems;
   if ("" + nb === "NaN") return { orderTotal: 0 };
