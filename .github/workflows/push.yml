@@ -11,19 +11,28 @@ jobs:
         node-version: '10.x'
     - run: npm ci
     - run: npm test
-    - run: npm run test:vulnerabilities
-      env:
-        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
     - run: npm run test:mutate
       env:
-        HAS_JOSH_K_SEAL_OF_APPROVAL: "true"
         STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
-        TRAVIS_BRANCH: '"${GITHUB_REF}"'
-        TRAVIS_PULL_REQUEST: "false"
-        TRAVIS_REPO_SLUG: '"${GITHUB_REPOSITORY}"'
     - run: npm run coveralls
       env:
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
         COVERALLS_SERVICE_NAME: Github Actions main.workflow
     - run: npm run prettier:check
     - run: npm start
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      with:
+        args: >
+          -Dsonar.organization=doppelganger9-github
+          -Dsonar.projectKey=doppelganger9_fruit-basket
+          -Dsonar.exclusions=node_modules/**/*,coverage/**/*,reports/**/*,**/*.config.js,**/*.conf.js
+          -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+          -Dsonar.language=js
+          -Dsonar.tests=.
+          -Dsonar.test.inclusions=**/*.spec.js
+          -Dsonar.sources=.
+          -Dsonar.verbose=true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

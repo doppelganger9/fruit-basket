@@ -1,0 +1,24 @@
+on:
+  schedule:
+    - cron: 5 10 1 * *
+
+name: monthly checks
+jobs:
+  checks:
+    name: npm build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '14.x'
+    - run: npm ci
+    - run: npm test
+    - run: npm run test:vulnerabilities
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+    - run: npm run test:mutate
+      env:
+        STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
+    - run: npm run prettier:check
+    - run: npm start
