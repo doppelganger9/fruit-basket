@@ -34,7 +34,7 @@
     "husky": "7.0.4",
     "jest": "27.5.1",
     "prettier": "2.6.1",
-    "snyk": "1.884.0"
+    "snyk": "1.885.0"
   },
   "jest": {
     "collectCoverage": true,
