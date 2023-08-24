@@ -32,7 +32,7 @@
     "@stryker-mutator/jest-runner": "5.6.1",
     "coveralls": "3.1.1",
     "husky": "8.0.3",
-    "jest": "27.5.1",
+    "jest": "29.6.4",
     "prettier": "2.8.8",
     "snyk": "1.1206.0"
   },
